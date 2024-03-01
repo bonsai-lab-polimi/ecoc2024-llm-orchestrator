@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Service Name"
+    },
+    "tag": {
+      "type": "string",
+      "description": "tag"
+    },
+    "className": {
+      "type": "string",
+      "enum": ["Connection"],
+      "description": "className"
+    },
+    "connGroup": {
+      "type": "string",
+      "description": "connGroup"
+    },
+    "customer": {
+      "type": "string",
+      "description": "customer name"
+    },
+    "protection": {
+      "type": "boolean",
+      "description": "Connection is protected or not"
+    },
+    "hierarchicalLevel": {
+      "type": "string",
+      "enum": ["infrastructure"],
+      "description": "Detail of the level in architecture hierarchy"
+    },
+    "configurationState": {
+      "type": "string",
+      "enum": ["defined", "routed", "implemented"],
+      "description": "Detail of state of configurationState"
+    },
+    "connLps": {
+      "type": "array",
+      "items": {
+        "className": {
+          "type": "string",
+          "const": ["ConnLpOtu"],
+          "description": "className of LTP Connection"
+        },
+        "rate": {
+          "type": "string",
+          "enum": ["otu2x"],
+          "description": "Detail of connection rate"
+        },
+        "fecType": {
+          "type": "string",
+          "enum": ["automatic", "noFec", "rsFec"],
+          "description": "Detail of Forward Error Correction Type"
+        },
+        "required": ["className", "rate"]
+      }
+    },
+    "connEndPoints": {
+      "type": "array",
+      "items": {
+        "legType": {
+          "type": "string",
+          "enum": ["main", "spare", "mainSpare"]
+        },
+        "endType": {
+          "type": "string",
+          "enum": ["source", "sink"],
+          "description": "Role of the port whose id specified"
+        },
+        "ltp": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "description": "Specify port id"
+            }
+          }
+        },
+        "required": ["ltp", "endType"]
+      }
+    },
+    "routingCriteria": {
+      "type": "string",
+      "enum": ["byLength", "byHops", "byAdministrativeCost"],
+      "description": "routing method to use in path route algorithm"
+    },
+    "administrativeCost": {
+      "type": "integer",
+      "description": "Administrative Cost"
+    },
+    "sncpInfo": {
+      "type": "object",
+      "properties": {
+        "holdOffTime": {
+          "type": "integer",
+          "description": "Hold off time"
+        },
+        "revertive": {
+          "type": "boolean",
+          "description": "revertive or not revertive"
+        },
+        "wtrTime": {
+          "type": "integer",
+          "description": "Waiting Time"
+        }
+      },
+      "required": ["holdOffTime", "revertive", "wtrTime"]
+    },
+    "preferredSncpType": {
+      "type": "string",
+      "enum": ["sncp_n", "sncp_i"],
+      "description": "Preferred Subnetwork Connection Protection"
+    },
+    "pm": {
+      "type": "object",
+      "properties": {
+        "cd15m": {
+          "type": "string",
+          "enum": ["disabled", "enabledCurrent", "enabledCurrentAndArchive"],
+          "description": "cd15m state"
+        },
+        "cd24h": {
+          "type": "string",
+          "enum": ["disabled", "enabledCurrent", "enabledCurrentAndArchive"],
+          "description": "cd24h state"
+        }
+      }
+    },
+    "alarmMode": {
+      "type": "string",
+      "description": "alarm mode"
+    },
+    "extendedAlarmMode": {
+      "type": "string",
+      "description": "Extended Alarm Mode"
+    }
+  },
+  "required": [
+    "className",
+    "connEndPoints",
+    "routingCriteria",
+    "sncpInfo",
+    "connLps",
+    "configurationState",
+    "hierarchicalLevel",
+    "name",
+    "protection",
+    "preferredSncpType"
+  ]
+}
