@@ -37,7 +37,6 @@
       "enum": ["defined", "routed", "implemented"],
       "description": "Detail of state of configurationState"
     },
-
     "connLps": {
       "type": "array",
       "items": {
