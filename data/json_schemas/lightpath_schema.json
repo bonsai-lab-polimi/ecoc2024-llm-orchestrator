@@ -25,7 +25,7 @@
     },
     "protection": {
       "type": "boolean",
-      "description": "Connection is protected or not"
+      "description": "Whether the lightpath is protected or not"
     },
     "hierarchicalLevel": {
       "type": "string",

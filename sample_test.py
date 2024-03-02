@@ -5,10 +5,13 @@ from llm_orchestrator.llm_interface import LLMInterface
 
 
 def main():
+
+    question_id = 2
+
     model_path = os.path.join(".", "data", "models", "mistral-7b-instruct-v0.2.Q5_K_M.gguf")
     system_prompt_path = os.path.join(".", "data", "test_set", "system_prompt.txt")
-    question_path = os.path.join(".", "data", "test_set", "prompts", "prompt_1.txt")
-    answer_path = os.path.join(".", "data", "test_set", "ground_truths", "answer_1.json")
+    question_path = os.path.join(".", "data", "test_set", "prompts", f"prompt_{question_id}.txt")
+    answer_path = os.path.join(".", "data", "test_set", "ground_truths", f"answer_{question_id}.json")
 
     interface = LLMInterface(model_path, n_ctx=8192, stream=True)
     prompt = "[INST] "
@@ -23,11 +26,14 @@ def main():
     schema_folder = os.path.join(".", "data", "json_schemas")
     for file in os.listdir(schema_folder):
         with open(os.path.join(schema_folder, file)) as f:
-            context += f"Schema file for {file}:\n"
+            object_type = file.split("_")[0]
+            context += f"Schema file for {object_type} objects:\n"
             context += f.read()
     prompt += context
     # Close prompt
     prompt += "[/INST]"
+
+    print(prompt)
 
     output = interface.generate(prompt)
     if not isinstance(output, Iterator):
