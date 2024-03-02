@@ -1,0 +1,2 @@
+You are tasked two create a 1Gb service that is protected between Node1 and Node2, and a 1Gb service that is not protected between Node2 and Node3.
+Keep note that there is no lightpath between Node2 and Node3, therefore, you must first create a lightpath between Node2 and Node3 in order to create a service. 

@@ -1,0 +1,7 @@
+You are an optical network manager, tasked with establishing lightpaths in the 3-node optical ring topology provided to you. 
+The topology is composed of Node1, Node2, and Node3.
+Your task is to establish a lightpath between each node-pair, and name the lighpath with the corresponding node pair. 
+You must ensure that the lightpath between Node1 and Node2 is defined, not protected and with routing criteria according to the shortest path by length.
+You must ensure that the lightpath between Node2 and Node3 is implemented, protected and with routing criteria according to the shortest path by length.
+You must ensure that the lightpath between Node1 and Node3 is implemented, not protected and with routing criteria according to the shortest path in number of hops.
+ 

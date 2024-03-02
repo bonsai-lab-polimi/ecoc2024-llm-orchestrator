@@ -1,0 +1,6 @@
+You are an optical network manager, tasked with establishing lightpaths in the 3-node optical ring topology provided to you. 
+The topology is composed of Node1, Node2, and Node3.
+Your task is to establish a lightpath between each node-pair, and name the lighpath with the corresponding node pair. 
+You must ensure that the lightpath between Node1 and Node2 and the lightpath between Node1 and Node3 is are implemented, while the lightpath between Node2 and Node3 is defined.
+You must ensure that the lightpath between Node1 and Node 2 and the lightpath between Node1 and Node3 are protected, while the lightpath between Node2 and Node3 is not protected.
+ 

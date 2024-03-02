@@ -1,0 +1,5 @@
+Assuming there are established lightpaths in the network, you are tasked with creating service requests between each node pair. 
+You are tasked with implementing a service request with a 1Gb rate between Node1 and Node2, a service request with a 1Gb rate between Node1 and Node3, and a service request with 1Gb rate between Node2 and Node3. 
+The service between Node1 and Node2 should be defined and not protected.
+The service between Node1 and Node3 shoould be defined and protected.
+The service between Node2 and Node3 should be defined and protected. 
