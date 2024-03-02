@@ -14,4 +14,4 @@ You must follow these rules:
 14. Each service is defined as "service" in terms of hierarchicalLevel
 15. The default rate for a service is 1Gb
 16. The default rate for a lightpath is otu2x, implying that the established lightpath is a non-coherent 10G lightpath
-17. 
+
