@@ -1,0 +1,17 @@
+You must follow these rules:
+1. A lightpath is associated to two optical nodes, a source node and a destination (sink) node. 
+2. A service is associate to two optical nodes, a source node and a destination (sink) node. 
+3. Each optical node has a unique name
+4. Each lightpath has a unique name, and is associate to a unique identifier in the source node and a unique identifier in the destination node
+5. Each service has a unique name, and is associate to a unique identifier in the source node and a unique identifier in the destination node
+6. A service between a source and destination can be created, given that there is a lightpath associated between the same source and destination
+7. The unique name of the lightpath should always follow this nomenclature "SourceNode-DestinationNode". For example, the lightpath between a node with name "NodeA" and a node with name "NodeB" will be "NodeA-NodeB"
+8. The unique name of the service should always follow this nomenclature "s-SourceNode-DestinationNode". For example, the service between a node with name "NodeA" and a node with name "NodeB" will be "s-NodeA-NodeB"
+9. The default configuration state for each lightpath and each service should be "implemented", unless stated otherwise
+10. The default routing criteria for each lightpath and each service should be "byLength", unless stated otherwise
+11. The default setting for the protection of each lightpath and each service should be "false", unless stated otherwise
+12. Each lightpath is defined as "infrastructure" in terms of hierarchicalLevel
+14. Each service is defined as "service" in terms of hierarchicalLevel
+15. The default rate for a service is 1Gb
+16. The default rate for a lightpath is otu2x, implying that the established lightpath is a non-coherent 10G lightpath
+17. 
