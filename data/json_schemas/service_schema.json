@@ -4,7 +4,7 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "Service Name"
+      "description": "Service name identifier"
     },
     "tag": {
       "type": "string",
@@ -12,12 +12,10 @@
     },
     "className": {
       "type": "string",
-      "enum": ["Connection"],
-      "description": "className"
+      "enum": ["Connection"]
     },
     "connGroup": {
-      "type": "string",
-      "description": "connGroup"
+      "type": "string"
     },
     "customer": {
       "type": "string",
@@ -25,7 +23,7 @@
     },
     "protection": {
       "type": "boolean",
-      "description": "Connection is protected or not"
+      "description": "Whether the service is protected or not"
     },
     "hierarchicalLevel": {
       "type": "string",
@@ -47,7 +45,7 @@
         },
         "rate": {
           "type": "string",
-          "enum": ["1Gb", "1Gb", "1Gb"],
+          "enum": ["1Gb", "10Gb", "100Gb"],
           "description": "Detail of connection rate"
         },
         "required": ["className", "rate"]
@@ -80,7 +78,7 @@
     "routingCriteria": {
       "type": "string",
       "enum": ["byLength", "byHops", "byAdministrativeCost"],
-      "description": "routing method to use in path route algorithm"
+      "description": "Routing method to use in path calculation algorithm"
     },
     "sncpInfo": {
       "type": "object",
@@ -91,7 +89,7 @@
         },
         "revertive": {
           "type": "boolean",
-          "description": "revertive or not revertive"
+          "description": "Revertive or not revertive"
         },
         "wtrTime": {
           "type": "integer",
@@ -141,12 +139,10 @@
       }
     },
     "alarmMode": {
-      "type": "string",
-      "description": "alarm mode"
+      "type": "string"
     },
     "extendedAlarmMode": {
-      "type": "string",
-      "description": "Extended Alarm Mode"
+      "type": "string"
     },
     "tcaTranspProfile15": {
       "type": "object",
