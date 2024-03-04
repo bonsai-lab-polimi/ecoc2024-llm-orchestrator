@@ -4,7 +4,7 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "Service Name"
+      "description": "Lightpath name identifier"
     },
     "tag": {
       "type": "string",
@@ -12,8 +12,7 @@
     },
     "className": {
       "type": "string",
-      "enum": ["Connection"],
-      "description": "className"
+      "enum": ["Connection"]
     },
     "connGroup": {
       "type": "string",
@@ -21,7 +20,7 @@
     },
     "customer": {
       "type": "string",
-      "description": "customer name"
+      "description": "Customer name"
     },
     "protection": {
       "type": "boolean",
@@ -38,8 +37,8 @@
       "description": "Detail of state of configurationState"
     },
     "connLps": {
-      "type": "array",
-      "items": {
+      "type": "object",
+      "properties": {
         "className": {
           "type": "string",
           "const": ["ConnLpOtu"],
@@ -48,19 +47,19 @@
         "rate": {
           "type": "string",
           "enum": ["otu2x"],
-          "description": "Detail of connection rate"
+          "description": "Connection rate"
         },
         "fecType": {
           "type": "string",
           "enum": ["automatic", "noFec", "rsFec"],
-          "description": "Detail of Forward Error Correction Type"
-        },
-        "required": ["className", "rate"]
-      }
+          "description": "Forward Error Correction type"
+        }
+      },
+      "required": ["className", "rate"]
     },
     "connEndPoints": {
-      "type": "array",
-      "items": {
+      "type": "object",
+      "properties": {
         "legType": {
           "type": "string",
           "enum": ["main", "spare", "mainSpare"]
@@ -78,18 +77,17 @@
               "description": "Specify port id"
             }
           }
-        },
-        "required": ["ltp", "endType"]
-      }
+        }
+      },
+      "required": ["className", "rate"]
     },
     "routingCriteria": {
       "type": "string",
       "enum": ["byLength", "byHops", "byAdministrativeCost"],
-      "description": "routing method to use in path route algorithm"
+      "description": "Routing method to use in path calculation algorithm"
     },
     "administrativeCost": {
-      "type": "integer",
-      "description": "Administrative Cost"
+      "type": "integer"
     },
     "sncpInfo": {
       "type": "object",
@@ -100,7 +98,7 @@
         },
         "revertive": {
           "type": "boolean",
-          "description": "revertive or not revertive"
+          "description": "Revertive or not revertive"
         },
         "wtrTime": {
           "type": "integer",
@@ -130,12 +128,10 @@
       }
     },
     "alarmMode": {
-      "type": "string",
-      "description": "alarm mode"
+      "type": "string"
     },
     "extendedAlarmMode": {
-      "type": "string",
-      "description": "Extended Alarm Mode"
+      "type": "string"
     }
   },
   "required": [
