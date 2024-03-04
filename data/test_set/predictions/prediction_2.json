@@ -1,0 +1,193 @@
+ Based on the given information and schema files, here's how I would generate the JSON data files for configuring a software-defined optical network:
+
+First, let's establish the lightpaths between each node pair as per the requirement:
+
+1. Lightpath between Node1 and Node2:
+```json
+{
+  "name": "Node1-Node2",
+  "className": "Connection",
+  "hierarchicalLevel": "infrastructure",
+  "configurationState": "implemented",
+  "protection": false,
+  "connEndPoints": [
+    {
+      "legType": "main",
+      "endType": "source",
+      "ltp": {
+        "id": 1
+      }
+    },
+    {
+      "legType": "main",
+      "endType": "sink",
+      "ltp": {
+        "id": 2
+      }
+    }
+  ],
+  "routingCriteria": "byLength"
+}
+```
+
+2. Lightpath between Node2 and Node3:
+```json
+{
+  "name": "Node2-Node3",
+  "className": "Connection",
+  "hierarchicalLevel": "infrastructure",
+  "configurationState": "implemented",
+  "protection": false,
+  "connEndPoints": [
+    {
+      "legType": "main",
+      "endType": "source",
+      "ltp": {
+        "id": 2
+      }
+    },
+    {
+      "legType": "main",
+      "endType": "sink",
+      "ltp": {
+        "id": 3
+      }
+    }
+  ],
+  "routingCriteria": "byLength"
+}
+```
+
+3. Lightpath between Node1 and Node3 (protected):
+```json
+{
+  "name": "Node1-Node3",
+  "className": "Connection",
+  "hierarchicalLevel": "infrastructure",
+  "configurationState": "implemented",
+  "protection": true,
+  "connEndPoints": [
+    {
+      "legType": "main",
+      "endType": "source",
+      "ltp": {
+        "id": 1
+      }
+    },
+    {
+      "legType": "spare",
+      "endType": "sink",
+      "ltp": {
+        "id": 3
+      }
+    }
+  ],
+  "routingCriteria": "byLength"
+}
+```
+
+Now, let's ensure that each service between the corresponding node pairs can be created since there exists a lightpath between them:
+
+1. Service between Node1 and Node2:
+```json
+{
+  "name": "s-Node1-Node2",
+  "className": "Connection",
+  "hierarchicalLevel": "service",
+  "configurationState": "implemented",
+  "protection": false,
+  "connEndPoints": [
+    {
+      "legType": "main",
+      "endType": "source",
+      "ltp": {
+        "id": 1
+      }
+    },
+    {
+      "legType": "main",
+      "endType": "sink",
+      "ltp": {
+        "id": 2
+      }
+    }
+  ],
+  "connLps": [
+    {
+      "className": "ConnLpOtu",
+      "rate": "otu2x"
+    }
+  ],
+  "routingCriteria": "byLength"
+}
+```
+
+2. Service between Node2 and Node3:
+```json
+{
+  "name": "s-Node2-Node3",
+  "className": "Connection",
+  "hierarchicalLevel": "service",
+  "configurationState": "implemented",
+  "protection": false,
+  "connEndPoints": [
+    {
+      "legType": "main",
+      "endType": "source",
+      "ltp": {
+        "id": 2
+      }
+    },
+    {
+      "legType": "main",
+      "endType": "sink",
+      "ltp": {
+        "id": 3
+      }
+    }
+  ],
+  "connLps": [
+    {
+      "className": "ConnLpOtu",
+      "rate": "otu2x"
+    }
+  ],
+  "routingCriteria": "byLength"
+}
+```
+
+3. Service between Node1 and Node3:
+```json
+{
+  "name": "s-Node1-Node3",
+  "className": "Connection",
+  "hierarchicalLevel": "service",
+  "configurationState": "implemented",
+  "protection": false,
+  "connEndPoints": [
+    {
+      "legType": "main",
+      "endType": "source",
+      "ltp": {
+        "id": 1
+      }
+    },
+    {
+      "legType": "main",
+      "endType": "sink",
+      "ltp": {
+        "id": 3
+      }
+    }
+  ],
+  "connLps": [
+    {
+      "className": "ConnLpOtu",
+      "rate": "otu2x"
+    }
+  ],
+  "routingCriteria": "byLength"
+}
+```
+
+Make sure each JSON object above satisfies the given schema files.
