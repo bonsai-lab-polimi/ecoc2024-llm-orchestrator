@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from abc import ABC, abstractmethod
 from typing import Any
 
@@ -45,3 +46,22 @@ class Verifier(AbstractVerifier):
                 Draft202012Validator.check_schema(schema)
                 schemas[schema_file] = schema
         return schemas
+
+    def _parse_llm_output(self, json_string: str) -> list:  # Changed return type to a list
+        json_list = []  # To store the parsed JSON objects
+        # Updated regular expression for multiple matches
+        pattern = r"""```    # match first occuring triple backticks
+                    (?:json)? # zero or one match of string json in non-capturing group
+                    (.*?)     # non-greedy match to the next triple backticks
+                    ```       # match the closing backticks
+                    """
+        for match in re.finditer(pattern, json_string, flags=re.DOTALL | re.VERBOSE):
+            json_str = match.group(1).strip()
+
+            try:
+                parsed = json.loads(json_str, strict=False)
+                json_list.append(parsed)
+            except json.JSONDecodeError:
+                print(f"Invalid JSON found: {json_str}")
+
+        return json_list

@@ -11,6 +11,7 @@ def main():
     model_path = os.path.join(".", "data", "models", "mistral-7b-instruct-v0.2.Q5_K_M.gguf")
     system_prompt_path = os.path.join(".", "data", "test_set", "system_prompt.txt")
     question_path = os.path.join(".", "data", "test_set", "prompts", f"prompt_{question_id}.txt")
+    prediction_path = os.path.join(".", "data", "test_set", "predictions", f"prediction_{question_id}.json")
     answer_path = os.path.join(".", "data", "test_set", "ground_truths", f"answer_{question_id}.json")
 
     interface = LLMInterface(model_path, n_ctx=8192, stream=True)
@@ -33,13 +34,17 @@ def main():
     # Close prompt
     prompt += "[/INST]"
 
-    print(prompt)
+    tokens = interface.tokenize(prompt)
 
-    output = interface.generate(prompt)
+    output = interface.generate(tokens, max_tokens=0, seed=42)
     if not isinstance(output, Iterator):
-        print(output["choices"][0]["text"])
+        answer = output["choices"][0]["text"]
     else:
-        print(next(output)["choices"][0]["text"])
+        answer = next(output)["choices"][0]["text"]
+
+    # Save the output to a file
+    with open(prediction_path, "w") as f:
+        f.write(answer)
 
 
 if __name__ == "__main__":
