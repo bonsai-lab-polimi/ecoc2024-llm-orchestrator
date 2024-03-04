@@ -2,10 +2,10 @@
 
 ## Installation
 Simply clone this repository and install it as a package using pip:
-```bash
-    git clone git@github.com:nicoladicicco/llm-orchestrator.git
-    cd llm-orchestrator
-    pip install -e .
+```sh
+$ git clone git@github.com:nicoladicicco/llm-orchestrator.git
+$ cd llm-orchestrator
+$ pip install -e .
 ```
 
 ## Usage
