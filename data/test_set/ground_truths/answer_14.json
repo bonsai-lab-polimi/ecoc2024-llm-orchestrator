@@ -1,0 +1,40 @@
+[
+    {
+        "className": "Connection",
+        "connEndPoints": [
+          {
+            "className": "ConnEndPoint",
+            "ltp": {
+              "className": "Ltp",
+              "id": 2273
+            },
+            "endType": "source"
+          },
+          {
+            "className": "ConnEndPoint",
+            "ltp": {
+              "className": "Ltp",
+              "id": 2301
+            },
+            "endType": "sink"
+          }
+        ],
+        "routingCriteria": "byLength",
+        "sncpInfo": {
+          "holdOffTime": 0,
+          "revertive": true,
+          "sncpType": "sncp_i",
+          "wtrTime": 300
+        },
+        "connLps": [
+          {
+            "className": "ConnLpEthCbr",
+            "rate": "1Gb"
+          }
+        ],
+        "configurationState": "implemented",
+        "hierarchicalLevel": "service",
+        "name": "service-Node1-Node2",
+        "protection": true
+    }
+]

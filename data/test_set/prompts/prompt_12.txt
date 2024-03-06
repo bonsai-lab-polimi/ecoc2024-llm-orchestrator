@@ -1,0 +1,2 @@
+You are an optical network manager, tasked with defining a 10G lightpath between Node1 and Node2.
+Make sure to name the lightpath as Node1-Node2-LP and ensure that it is protected. 
