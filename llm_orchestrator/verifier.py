@@ -36,13 +36,13 @@ class Verifier(AbstractVerifier):
             return (0, "Data does not match any schema")
         if not data == ground_truth:
             error_report = ""
-            for key in ground_truth:
-                if key not in data:
-                    error_report += f"Key {key} in ground truth not found in generated data\n"
-            for key in data:
-                if key not in ground_truth:
-                    error_report += f"Key {key} in generated data not found in ground truth\n"
-                    continue
+            keys_truth = set(ground_truth.keys())
+            keys_data = set(data.keys())
+            for key in keys_truth - keys_data:
+                error_report += f"Key {key} in ground truth not found in generated data\n"
+            for key in keys_data - keys_truth:
+                error_report += f"Key {key} in generated data not found in ground truth\n"
+            for key in keys_data & keys_truth:
                 if data[key] != ground_truth[key]:
                     error_report += f"Value for key {key} does not match ground truth\n"
             return (0, error_report)
