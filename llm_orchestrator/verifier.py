@@ -19,9 +19,8 @@ class Verifier(AbstractVerifier):
     def __init__(self, schema_dir: str):
         self._schema_dir = schema_dir
 
-    def verify(self, data: str) -> tuple[bool, str]:
+    def verify(self, data: dict) -> tuple[bool, str]:
         schema_files = self._load_schemas()
-        data = json.loads(data)
         errors = ""
         for file_name, schema in schema_files.items():
             try:
@@ -31,11 +30,23 @@ class Verifier(AbstractVerifier):
                 errors += f"Mismatch in {file_name} schema. Error message: {e.message}\n"
         return (False, errors)
 
-    def score(self, data: str):
+    def score(self, data: dict, ground_truth: dict) -> tuple[int, str]:
         res, _ = self.verify(data)
-        if res:
-            return 1
-        return 0
+        if not res:
+            return (0, "Data does not match any schema")
+        if not data == ground_truth:
+            error_report = ""
+            for key in ground_truth:
+                if key not in data:
+                    error_report += f"Key {key} in ground truth not found in generated data\n"
+            for key in data:
+                if key not in ground_truth:
+                    error_report += f"Key {key} in generated data not found in ground truth\n"
+                    continue
+                if data[key] != ground_truth[key]:
+                    error_report += f"Value for key {key} does not match ground truth\n"
+            return (0, error_report)
+        return (1, "Data matches ground truth")
 
     def _load_schemas(self) -> dict:
         schema_files = os.listdir(self._schema_dir)
@@ -47,9 +58,8 @@ class Verifier(AbstractVerifier):
                 schemas[schema_file] = schema
         return schemas
 
-    def _parse_llm_output(self, json_string: str) -> list:  # Changed return type to a list
-        json_list = []  # To store the parsed JSON objects
-        # Updated regular expression for multiple matches
+    def _parse_llm_output(self, json_string: str) -> list:
+        json_list = []
         pattern = r"""```    # match first occuring triple backticks
                     (?:json)? # zero or one match of string json in non-capturing group
                     (.*?)     # non-greedy match to the next triple backticks
