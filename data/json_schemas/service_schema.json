@@ -36,24 +36,29 @@
       "description": "Detail of state of configurationState"
     },
     "connLps": {
-      "type": "array",
-      "items": {
+      "type": "object",
+      "properties": {
         "className": {
           "type": "string",
-          "const": ["ConnLpEthCbr"],
-          "description": "className of Ethernet CBR Connection"
+          "const": ["ConnLpOtu"],
+          "description": "className of LTP Connection"
         },
         "rate": {
           "type": "string",
-          "enum": ["1Gb", "10Gb", "100Gb"],
-          "description": "Detail of connection rate"
+          "enum": ["otu2x"],
+          "description": "Connection rate"
         },
-        "required": ["className", "rate"]
-      }
+        "fecType": {
+          "type": "string",
+          "enum": ["automatic", "noFec", "rsFec"],
+          "description": "Forward Error Correction type"
+        }
+      },
+      "required": ["className", "rate"]
     },
     "connEndPoints": {
-      "type": "array",
-      "items": {
+      "type": "object",
+      "properties": {
         "legType": {
           "type": "string",
           "enum": ["main", "spare", "mainSpare"]
@@ -71,9 +76,9 @@
               "description": "Specify port id"
             }
           }
-        },
-        "required": ["ltp", "endType"]
-      }
+        }
+      },
+      "required": ["className", "rate"]
     },
     "routingCriteria": {
       "type": "string",
