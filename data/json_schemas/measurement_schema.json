@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "configurationState": {
+      "type": "string",
+      "enum": ["started"]
+    },
+    "pm": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "cd15m": {
+              "type": "string",
+              "enum": ["enabledOnlyCurrent"]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "cd24h": {
+              "type": "string",
+              "enum": ["enabledOnlyCurrent"]
+            }
+          }
+        }
+      ]
+    },
+    "transports": {
+      "type": "string"
+    }
+  }
+}
