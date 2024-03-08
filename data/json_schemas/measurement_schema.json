@@ -7,7 +7,7 @@
       "enum": ["started"]
     },
     "pm": {
-      "oneOf": [
+      "anyOf": [
         {
           "type": "object",
           "properties": {
