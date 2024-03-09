@@ -1,0 +1,2 @@
+You are tasked with implementing one lightpaths between Node2 and Node3 and one lightpath between Node1 and Node3.
+You must name the lightpaths as "Node2-lightpath-Node3" and "Node1-lightpath-Node3". Both lightpaths should be implemented and routed according to the byLength routing criteria. The lightpaths must be unprotected. 

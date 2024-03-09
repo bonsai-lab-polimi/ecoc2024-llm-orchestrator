@@ -6,7 +6,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2274
+          "id": 2303
         },
         "endType": "source"
       },
@@ -14,7 +14,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2362
+          "id": 2363
         },
         "endType": "sink"
       }
@@ -28,13 +28,13 @@
     },
     "connLps": [
       {
-        "className": "ConnLpEthCbr",
-        "rate": "1Gb"
+        "className": "ConnLpOtu",
+        "rate": "otu2x"
       }
     ],
     "configurationState": "implemented",
-    "hierarchicalLevel": "service",
-    "name": "service-Node2-Node3",
+    "hierarchicalLevel": "infrastructure",
+    "name": "lightpath-Node2-to-Node3",
     "protection": true
   }
 ]

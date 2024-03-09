@@ -1,0 +1,2 @@
+You are tasked with implementing a service request with a 1Gb rate between Node2 and Node1 and a service request with a 1Gb rate between Node3 and Node1.
+The service between Node2 and Node1 must be named Node2-1G-service-Node1 and the service between Node3 and Node1 must be named Node3-1G-service-Node1.

@@ -6,7 +6,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2300
+          "id": 2273
         },
         "endType": "source"
       },
@@ -14,12 +14,12 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2272
+          "id": 2301
         },
         "endType": "sink"
       }
     ],
-    "routingCriteria": "byLength",
+    "routingCriteria": "byHops",
     "sncpInfo": {
       "holdOffTime": 0,
       "revertive": true,
@@ -28,14 +28,14 @@
     },
     "connLps": [
       {
-        "className": "ConnLpEthCbr",
-        "rate": "1Gb"
+        "className": "ConnLpOtu",
+        "rate": "otu2x"
       }
     ],
     "configurationState": "implemented",
-    "hierarchicalLevel": "service",
-    "name": "s-Node1-Node2",
-    "protection": true
+    "hierarchicalLevel": "infrastructure",
+    "name": "lightpath1-Node1-to-Node2",
+    "protection": false
   },
   {
     "className": "Connection",
@@ -44,7 +44,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2302
+          "id": 2283
         },
         "endType": "source"
       },
@@ -52,7 +52,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2360
+          "id": 2311
         },
         "endType": "sink"
       }
@@ -66,13 +66,13 @@
     },
     "connLps": [
       {
-        "className": "ConnLpEthCbr",
-        "rate": "10Gb"
+        "className": "ConnLpOtu",
+        "rate": "otu2x"
       }
     ],
     "configurationState": "implemented",
-    "hierarchicalLevel": "service",
-    "name": "s-Node1-Node3",
+    "hierarchicalLevel": "infrastructure",
+    "name": "lightpath2-Node1-to-Node2",
     "protection": false
   }
 ]

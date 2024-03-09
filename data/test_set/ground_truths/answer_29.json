@@ -6,7 +6,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2300
+          "id": 2272
         },
         "endType": "source"
       },
@@ -14,7 +14,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2272
+          "id": 2300
         },
         "endType": "sink"
       }
@@ -34,8 +34,8 @@
     ],
     "configurationState": "implemented",
     "hierarchicalLevel": "service",
-    "name": "s-Node1-Node2",
-    "protection": true
+    "name": "Node2-1G-service-Node1",
+    "protection": false
   },
   {
     "className": "Connection",
@@ -72,7 +72,7 @@
     ],
     "configurationState": "implemented",
     "hierarchicalLevel": "service",
-    "name": "s-Node1-Node3",
+    "name": "Node3-1G-service-Node1",
     "protection": false
   }
 ]

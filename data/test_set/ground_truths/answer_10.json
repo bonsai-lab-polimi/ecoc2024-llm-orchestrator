@@ -1,12 +1,12 @@
 [
-{
+  {
     "className": "Connection",
     "connEndPoints": [
         {
         "className": "ConnEndPoint",
         "ltp": {
             "className": "Ltp",
-            "id": 2273
+            "id": 2303
         },
         "endType": "source"
         },
@@ -14,7 +14,7 @@
         "className": "ConnEndPoint",
         "ltp": {
             "className": "Ltp",
-            "id": 2301
+            "id": 2363
         },
         "endType": "sink"
         }
@@ -36,15 +36,15 @@
     "hierarchicalLevel": "infrastructure",
     "name": "Node2-Node3",
     "protection": false
-    },
-    {
+  },
+  {
     "className": "Connection",
     "connEndPoints": [
       {
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2273
+          "id": 2300
         },
         "endType": "source"
       },
@@ -52,7 +52,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2301
+          "id": 2272
         },
         "endType": "sink"
       }
@@ -82,7 +82,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2273
+          "id": 2274
         },
         "endType": "source"
       },
@@ -90,7 +90,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2301
+          "id": 2362
         },
         "endType": "sink"
       }
