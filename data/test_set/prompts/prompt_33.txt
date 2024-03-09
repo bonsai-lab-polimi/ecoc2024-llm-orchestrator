@@ -1,0 +1,4 @@
+You are tasked with implementing a service request with a 1Gb rate between Node2 and Node1, named Node2-service-Node1, and must be unprotected. 
+You are tasked with implementing a service between Node2 and Node3 with 1G rate, named Node2-Node3-serv, and must be unprotected.  
+You are tasked with implementing a service request with a 1Gb rate between Node3 and Node1, named Node3-service-Node1, and must be unprotected.   
+

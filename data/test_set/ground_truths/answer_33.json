@@ -1,0 +1,116 @@
+[
+  {
+    "className": "Connection",
+    "connEndPoints": [
+      {
+        "className": "ConnEndPoint",
+        "ltp": {
+          "className": "Ltp",
+          "id": 2272
+        },
+        "endType": "source"
+      },
+      {
+        "className": "ConnEndPoint",
+        "ltp": {
+          "className": "Ltp",
+          "id": 2300
+        },
+        "endType": "sink"
+      }
+    ],
+    "routingCriteria": "byLength",
+    "sncpInfo": {
+      "holdOffTime": 0,
+      "revertive": true,
+      "sncpType": "sncp_i",
+      "wtrTime": 300
+    },
+    "connLps": [
+      {
+        "className": "ConnLpEthCbr",
+        "rate": "1Gb"
+      }
+    ],
+    "configurationState": "implemented",
+    "hierarchicalLevel": "service",
+    "name": "Node2-service-Node1",
+    "protection": false
+  },
+  {
+    "className": "Connection",
+    "connEndPoints": [
+      {
+        "className": "ConnEndPoint",
+        "ltp": {
+          "className": "Ltp",
+          "id": 2274
+        },
+        "endType": "source"
+      },
+      {
+        "className": "ConnEndPoint",
+        "ltp": {
+          "className": "Ltp",
+          "id": 2362
+        },
+        "endType": "sink"
+      }
+    ],
+    "routingCriteria": "byLength",
+    "sncpInfo": {
+      "holdOffTime": 0,
+      "revertive": true,
+      "sncpType": "sncp_i",
+      "wtrTime": 300
+    },
+    "connLps": [
+      {
+        "className": "ConnLpEthCbr",
+        "rate": "1Gb"
+      }
+    ],
+    "configurationState": "implemented",
+    "hierarchicalLevel": "service",
+    "name": "Node2-Node3-serv",
+    "protection": false
+  },
+  {
+    "className": "Connection",
+    "connEndPoints": [
+      {
+        "className": "ConnEndPoint",
+        "ltp": {
+          "className": "Ltp",
+          "id": 2360
+        },
+        "endType": "source"
+      },
+      {
+        "className": "ConnEndPoint",
+        "ltp": {
+          "className": "Ltp",
+          "id": 2302
+        },
+        "endType": "sink"
+      }
+    ],
+    "routingCriteria": "byLength",
+    "sncpInfo": {
+      "holdOffTime": 0,
+      "revertive": true,
+      "sncpType": "sncp_i",
+      "wtrTime": 300
+    },
+    "connLps": [
+      {
+        "className": "ConnLpEthCbr",
+        "rate": "1Gb"
+      }
+    ],
+    "configurationState": "implemented",
+    "hierarchicalLevel": "service",
+    "name": "Node3-service-Node1",
+    "protection": false
+  }
+]
