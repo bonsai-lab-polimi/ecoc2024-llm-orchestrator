@@ -1,0 +1,2 @@
+You are tasked with starting a performance monitoring (PM) campaign for the lightpath lightpath2-Node1-to-Node2 
+You must enable the 15 minute granularity and 24 hour granularity performance measurement campaing

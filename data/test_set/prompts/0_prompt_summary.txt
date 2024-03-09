@@ -8,11 +8,10 @@ Description of the dataset!
     c. 5 entries with 1 lightpath 
 
 2. services 
-    a. 2 entries with 3 services 
-    b. 3 entries with 2 services + 1 entry with 2 services (and 1 lightpath created automatically (assuming there is not one existing)) 
+    a. 5 entries with 3 services 
+    b. 5 entries with 2 services + 1 entry with 2 services (and 1 lightpath created automatically (assuming there is not one existing)) 
     c. 5 entries for single service + 1 entry with single service with lightpath not defined previously
 
 3. performance monitoring
     a. 2 entries for single PM for lightpath 
     b. 1 entry for a single PM for service 
-    
