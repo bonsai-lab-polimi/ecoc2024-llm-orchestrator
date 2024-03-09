@@ -1,7 +1,7 @@
 Description of the dataset!
 
 ---------------
-30 entries to the dataset: 
+40 entries to the dataset: 
 1. lightpaths
     a. 5 entries with 3 lightpath pairs (between all node pairs)
     b. 5 entries with 2 lightpaths
@@ -13,5 +13,5 @@ Description of the dataset!
     c. 5 entries for single service + 1 entry with single service with lightpath not defined previously
 
 3. performance monitoring
-    a. 2 entries for single PM for lightpath 
-    b. 1 entry for a single PM for service 
+    a. 4 entries for single PM for lightpath 
+    b. 4 entry for a single PM for service 
