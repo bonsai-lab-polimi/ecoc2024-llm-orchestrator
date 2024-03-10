@@ -9,7 +9,7 @@ from llm_orchestrator.llm_interface import LLMInterface
 
 def main():
     model_path = os.path.join(".", "data", "models", "mistral-7b-instruct-v0.2.Q5_K_M.gguf")
-    system_prompt_path = os.path.join(".", "data", "test_set", "system_prompt_executor.txt")
+    system_prompt_path = os.path.join(".", "data", "system_prompts", "system_prompt_executor.txt")
     task_list_folder = os.path.join(".", "data", "test_set", "predictions", "task_lists")
     prediction_folder = os.path.join(".", "data", "test_set", "predictions", "json_data")
     schema_folder = os.path.join(".", "data", "json_schemas")
@@ -28,6 +28,7 @@ def main():
     grammars_dict = {}
     for task, schema in task_to_schema_path.items():
         schema_path = os.path.join(schema_folder, schema)
+        print("Loading schema:", schema_path)
         grammars_dict[task] = LlamaGrammar.from_json_schema(open(schema_path).read())
 
     # Read system prompt

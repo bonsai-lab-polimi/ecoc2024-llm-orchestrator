@@ -90,7 +90,8 @@
         },
         "endType": {
           "type": "string",
-          "enum": ["source", "sink"]
+          "enum": ["source", "sink"],
+          "description": "Whether the node is source or sink"
         }
       }
     },

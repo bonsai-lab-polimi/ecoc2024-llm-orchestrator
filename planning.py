@@ -8,8 +8,8 @@ from llm_orchestrator.llm_interface import LLMInterface
 
 
 def main():
-    model_path = os.path.join(".", "data", "models", "mistral-7b-instruct-v0.2.Q5_K_M.gguf")
-    system_prompt_path = os.path.join(".", "data", "test_set", "system_prompt_planner2.txt")
+    model_path = os.path.join(".", "data", "models", "mixtral-8x7b-instruct-v0.1.Q4_K_M.gguf")
+    system_prompt_path = os.path.join(".", "data", "system_prompts", "system_prompt_planner.txt")
     questions_folder = os.path.join(".", "data", "test_set", "prompts")
     schema_path = os.path.join(".", "data", "json_schemas", "task_schema.json")
 

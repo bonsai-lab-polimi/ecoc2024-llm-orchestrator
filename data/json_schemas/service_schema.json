@@ -8,22 +8,27 @@
     },
     "tag": {
       "type": "string",
-      "description": "tag"
+      "description": "tag",
+      "default": ""
     },
     "className": {
       "type": "string",
-      "enum": ["Connection"]
+      "enum": ["Connection"],
+      "default": ""
     },
     "connGroup": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "customer": {
       "type": "string",
-      "description": "customer name"
+      "description": "customer name",
+      "default": ""
     },
     "protection": {
       "type": "boolean",
-      "description": "Whether the service is protected or not"
+      "description": "Whether the service is protected or not",
+      "default": false
     },
     "hierarchicalLevel": {
       "type": "string",
@@ -40,55 +45,55 @@
       "type": "array",
       "items": {
         "type": "object",
-      "properties": {
-        "className": {
-          "type": "string",
-          "enum": ["ConnLpEthCbr"],
-          "description": "className of LTP Connection"
+        "properties": {
+          "className": {
+            "type": "string",
+            "enum": ["ConnLpEthCbr"],
+            "description": "className of LTP Connection"
+          },
+          "rate": {
+            "type": "string",
+            "enum": ["1Gb", "10Gb"],
+            "description": "Connection rate"
+          },
+          "fecType": {
+            "type": "string",
+            "enum": ["automatic", "noFec", "rsFec"],
+            "description": "Forward Error Correction type",
+            "default": "automatic"
+          }
         },
-        "rate": {
-          "type": "string",
-          "enum": ["1Gb", "10Gb"],
-          "description": "Connection rate"
-        },
-        "fecType": {
-          "type": "string",
-          "enum": ["automatic", "noFec", "rsFec"],
-          "description": "Forward Error Correction type",
-          "default": "automatic"
-        }
-      },
-      "required": ["className", "rate"]}
+        "required": ["className", "rate"]
+      }
     },
     "connEndPoints": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "className": {
-              "type": "string",
-              "enum": ["ConnEndPoint"]
-            },
-            "ltp": {
-              "type": "object",
-              "properties": {
-                "className": {
-                  "type": "string",
-                  "enum": ["Ltp"]
-                },
-                "id": {
-                  "type": "integer",
-                  "description": "ID of the source node"
-                }
+      "items": {
+        "type": "object",
+        "properties": {
+          "className": {
+            "type": "string",
+            "enum": ["ConnEndPoint"]
+          },
+          "ltp": {
+            "type": "object",
+            "properties": {
+              "className": {
+                "type": "string",
+                "enum": ["Ltp"]
+              },
+              "id": {
+                "type": "integer",
+                "description": "integer ID of the source/sink node"
               }
             }
-          },
-          "endType": {
-            "type": "string",
-            "enum": ["source", "sink"]
           }
+        },
+        "endType": {
+          "type": "string",
+          "enum": ["source", "sink"]
         }
+      }
     },
     "routingCriteria": {
       "type": "string",
@@ -142,7 +147,8 @@
       "properties": {
         "provisioned": {
           "type": "string",
-          "description": "pm mode provision"
+          "description": "pm mode provision",
+          "default": ""
         }
       }
     },
@@ -150,27 +156,33 @@
       "type": "object",
       "properties": {
         "isDefault": {
-          "type": "boolean"
+          "type": "boolean",
+          "default": true
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "default": ""
         }
       }
     },
     "alarmMode": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "extendedAlarmMode": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "tcaTranspProfile15": {
       "type": "object",
       "properties": {
         "isDefault": {
-          "type": "boolean"
+          "type": "boolean",
+          "default": true
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "default": ""
         }
       }
     },
@@ -178,10 +190,12 @@
       "type": "object",
       "properties": {
         "isDefault": {
-          "type": "boolean"
+          "type": "boolean",
+          "default": true
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "default": ""
         }
       }
     }
