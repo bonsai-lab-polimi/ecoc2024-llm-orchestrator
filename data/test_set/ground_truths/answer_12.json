@@ -34,7 +34,7 @@
     ],
     "configurationState": "defined",
     "hierarchicalLevel": "infrastructure",
-    "name": "LP-Node1-Node2",
-    "protection": false
+    "name": "Node1-Node2-LP",
+    "protection": true
   }
 ]

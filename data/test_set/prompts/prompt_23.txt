@@ -1,3 +1,4 @@
 You are tasked with implementing a two lightpaths: one lightpath between Node1 and Node2 and a lightpath between Node1 and Node3.
-The lightpath between Node1 and Node2 must be implemented and protected.
-The lightpath between Node1 and Node3 must be defined and unprotected.
+The configuration state of the lightpath between Node1 and Node2 must be set as implemented, and protection should be enabled.
+The configuration state of the lightpath between Node1 and Node3 must be set as defined, and the lightpath must be unprotected.
+The routing criteria should be set to by hops for both lightpaths.

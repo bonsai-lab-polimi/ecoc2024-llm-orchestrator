@@ -1,3 +1,5 @@
 You are tasked with implementing a two lightpaths: one lightpath between Node2 and Node3 and a lightpath between Node3 and Node1.
 The lightpath between Node2 and Node3 should be implemented, protected, and routed according to the byHops routing criteria.
 The lightpath between Node3 and Node1 should be implemented, not protected, and routed according to the byLength routing criteria. 
+The name of the lightpath must follow the following pattern: "lightpath-<source_node>-to-<destination_node>".
+

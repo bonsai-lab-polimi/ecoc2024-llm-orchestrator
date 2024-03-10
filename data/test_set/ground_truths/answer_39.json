@@ -1,9 +1,11 @@
-{
-  "configurationState": "started",
-  "pm": { "cd24h": "enabledOnlyCurrent" },
-  "transports": [
-    {
-      "name": "Node3-service-Node1 "
-    }
-  ]
-}
+[
+  {
+    "configurationState": "started",
+    "pm": { "cd24h": "enabledOnlyCurrent" },
+    "transports": [
+      {
+        "name": "Node3-service-Node1 "
+      }
+    ]
+  }
+]

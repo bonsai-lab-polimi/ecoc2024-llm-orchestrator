@@ -34,7 +34,7 @@
     ],
     "configurationState": "defined",
     "hierarchicalLevel": "service",
-    "name": "s-Node1-Node2",
+    "name": "S-Node1-Node2",
     "protection": false
   },
   {
@@ -72,7 +72,7 @@
     ],
     "configurationState": "defined",
     "hierarchicalLevel": "service",
-    "name": "s-Node1-Node3",
+    "name": "S-Node1-Node3",
     "protection": true
   },
   {
@@ -110,7 +110,7 @@
     ],
     "configurationState": "defined",
     "hierarchicalLevel": "service",
-    "name": "s-Node2-Node3",
+    "name": "S-Node2-Node3",
     "protection": true
   }
 ]

@@ -1,2 +1,2 @@
-You are tasked with creating a 1Gb service request between Node1 and Node2, and ensuring the service is protected. 
-
+You are tasked with creating a 1Gb service request between Node1 and Node2, and ensuring the service is protected.
+Note that there is no lightpath between Node1 and Node2, so you will need to first create a service, and then attach the service to that lightpath.

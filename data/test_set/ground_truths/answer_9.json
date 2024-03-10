@@ -1,42 +1,42 @@
 [
-    {
-      "className": "Connection",
-      "connEndPoints": [
-        {
-          "className": "ConnEndPoint",
-          "ltp": {
-            "className": "Ltp",
-            "id": 2273
-          },
-          "endType": "source"
+  {
+    "className": "Connection",
+    "connEndPoints": [
+      {
+        "className": "ConnEndPoint",
+        "ltp": {
+          "className": "Ltp",
+          "id": 2273
         },
-        {
-          "className": "ConnEndPoint",
-          "ltp": {
-            "className": "Ltp",
-            "id": 2301
-          },
-          "endType": "sink"
-        }
-      ],
-      "routingCriteria": "byLength",
-      "sncpInfo": {
-        "holdOffTime": 0,
-        "revertive": true,
-        "sncpType": "sncp_i",
-        "wtrTime": 300
+        "endType": "source"
       },
-      "connLps": [
-        {
-          "className": "ConnLpOtu",
-          "rate": "otu2x"
-        }
-      ],
-      "configurationState": "implemented",
-      "hierarchicalLevel": "infrastructure",
-      "name": "Node1-Node2",
-      "protection": true
+      {
+        "className": "ConnEndPoint",
+        "ltp": {
+          "className": "Ltp",
+          "id": 2301
+        },
+        "endType": "sink"
+      }
+    ],
+    "routingCriteria": "byLength",
+    "sncpInfo": {
+      "holdOffTime": 0,
+      "revertive": true,
+      "sncpType": "sncp_i",
+      "wtrTime": 300
     },
+    "connLps": [
+      {
+        "className": "ConnLpOtu",
+        "rate": "otu2x"
+      }
+    ],
+    "configurationState": "implemented",
+    "hierarchicalLevel": "infrastructure",
+    "name": "LP-Node1-Node2",
+    "protection": true
+  },
   {
     "className": "Connection",
     "connEndPoints": [
@@ -72,7 +72,7 @@
     ],
     "configurationState": "implemented",
     "hierarchicalLevel": "service",
-    "name": "s-Node1-Node2",
+    "name": "S-Node1-Node2",
     "protection": true
   }
 ]

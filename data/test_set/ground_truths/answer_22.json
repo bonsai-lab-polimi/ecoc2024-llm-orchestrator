@@ -35,6 +35,6 @@
     "configurationState": "implemented",
     "hierarchicalLevel": "infrastructure",
     "name": "lightpath-Node2-to-Node1",
-    "protection": false
+    "protection": true
   }
 ]

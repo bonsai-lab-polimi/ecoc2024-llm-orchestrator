@@ -1,3 +1,4 @@
 You are tasked with implementing a 1Gb service request between Node2 and Node3.
 You must name the service as Node2-1G-service-Node3 and must ensure the service is unprotected.
+The configuration state should be set as defined.
  

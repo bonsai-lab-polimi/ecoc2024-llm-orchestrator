@@ -32,7 +32,7 @@
         "rate": "1Gb"
       }
     ],
-    "configurationState": "defined",
+    "configurationState": "implemented",
     "hierarchicalLevel": "service",
     "name": "Node2-service-Node3",
     "protection": true
