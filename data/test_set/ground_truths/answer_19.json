@@ -2,10 +2,8 @@
   {
     "configurationState": "started",
     "pm": { "cd15m": "enabledOnlyCurrent" },
-    "transports": [
-      {
-        "name": "Node1-Node2-LP"
-      }
-    ]
+    "transports": {
+      "name": "Node1-Node2-LP"
+    }
   }
 ]

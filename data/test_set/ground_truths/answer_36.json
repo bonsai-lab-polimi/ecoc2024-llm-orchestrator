@@ -2,10 +2,8 @@
   {
     "configurationState": "started",
     "pm": { "cd15m": "enabledOnlyCurrent" },
-    "transports": [
-      {
-        "name": "lightpath1-Node1-to-Node2"
-      }
-    ]
+    "transports": {
+      "name": "lightpath1-Node1-to-Node2"
+    }
   }
 ]

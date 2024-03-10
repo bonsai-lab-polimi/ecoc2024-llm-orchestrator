@@ -2,10 +2,8 @@
   {
     "configurationState": "started",
     "pm": { "cd15m": "enabledOnlyCurrent", "cd24h": "enabledOnlyCurrent" },
-    "transports": [
-      {
-        "name": "service-Node1-Node2"
-      }
-    ]
+    "transports": {
+      "name": "service-Node1-Node2"
+    }
   }
 ]
