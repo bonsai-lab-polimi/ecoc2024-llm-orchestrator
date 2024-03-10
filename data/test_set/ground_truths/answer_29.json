@@ -6,7 +6,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2272
+          "id": 2300
         },
         "endType": "source"
       },
@@ -14,7 +14,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2300
+          "id": 2272
         },
         "endType": "sink"
       }
@@ -44,7 +44,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2302
+          "id": 2360
         },
         "endType": "source"
       },
@@ -52,7 +52,7 @@
         "className": "ConnEndPoint",
         "ltp": {
           "className": "Ltp",
-          "id": 2360
+          "id": 2274
         },
         "endType": "sink"
       }
@@ -67,7 +67,7 @@
     "connLps": [
       {
         "className": "ConnLpEthCbr",
-        "rate": "10Gb"
+        "rate": "1Gb"
       }
     ],
     "configurationState": "implemented",
