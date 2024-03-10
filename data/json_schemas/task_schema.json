@@ -9,6 +9,7 @@
         "enum": ["Lightpath", "Service", "Measurement"]
       },
       "description": { "type": "string" }
-    }
+    },
+    "required": ["type", "description"]
   }
 }

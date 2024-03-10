@@ -11,11 +11,13 @@
       "properties": {
         "cd15m": {
           "type": "string",
-          "enum": ["enabledOnlyCurrent"]
+          "enum": ["enabledOnlyCurrent"],
+          "description": "Enables monitoring every 15 minutes"
         },
         "cd24h": {
           "type": "string",
-          "enum": ["enabledOnlyCurrent"]
+          "enum": ["enabledOnlyCurrent"],
+          "description": "Enables monitoring every 24 hours"
         }
       }
     },
@@ -24,7 +26,8 @@
       "properties": {
         "name": {
           "type": "string"
-        }
+        },
+        "description": "Name of the lightpath or service to monitor"
       }
     }
   }

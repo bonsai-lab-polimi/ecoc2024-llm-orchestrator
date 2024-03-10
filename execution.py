@@ -39,11 +39,12 @@ def main():
         task_id = task_list_file.split("_")[1].split(".")[0]
         task_list = json.load(open(task_list_path))
         json_list = []
+        # Loop over all the tasks in the task list
         for task in task_list:
             schema_name = task["type"]
             grammar = grammars_dict[schema_name]
             # Generate the tokens for the full prompt
-            # Mistral Instruct requires two special tokens to start and end the prompt
+            # Mistral/Mixtral Instruct requires two special tokens to start and end the prompt
             tokens = interface.tokenize(
                 "[INST]" + system_prompt + task["description"] + "\n" + task_to_schema[schema_name] + "[/INST]"
             )

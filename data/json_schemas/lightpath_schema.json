@@ -8,7 +8,8 @@
     },
     "tag": {
       "type": "string",
-      "description": "tag"
+      "description": "tag",
+      "default": ""
     },
     "className": {
       "type": "string",
@@ -16,15 +17,18 @@
     },
     "connGroup": {
       "type": "string",
-      "description": "connGroup"
+      "description": "connGroup",
+      "default": ""
     },
     "customer": {
       "type": "string",
-      "description": "Customer name"
+      "description": "Customer name",
+      "default": ""
     },
     "protection": {
       "type": "boolean",
-      "description": "Whether the lightpath is protected or not"
+      "description": "Whether the lightpath is protected or not",
+      "default": false
     },
     "hierarchicalLevel": {
       "type": "string",
@@ -34,14 +38,15 @@
     "configurationState": {
       "type": "string",
       "enum": ["defined", "routed", "implemented"],
-      "description": "Detail of state of configurationState"
+      "description": "Detail of state of configurationState",
+      "default": "implemented"
     },
     "connLps": {
       "type": "object",
       "properties": {
         "className": {
           "type": "string",
-          "const": ["ConnLpOtu"],
+          "enum": ["ConnLpOtu"],
           "description": "className of LTP Connection"
         },
         "rate": {
@@ -58,28 +63,61 @@
       "required": ["className", "rate"]
     },
     "connEndPoints": {
-      "type": "object",
-      "properties": {
-        "legType": {
-          "type": "string",
-          "enum": ["main", "spare", "mainSpare"]
-        },
-        "endType": {
-          "type": "string",
-          "enum": ["source", "sink"],
-          "description": "Role of the port whose id specified"
-        },
-        "ltp": {
+      "type": "array",
+      "prefixItems": [
+        {
           "type": "object",
           "properties": {
-            "id": {
-              "type": "integer",
-              "description": "Specify port id"
+            "className": {
+              "type": "string",
+              "enum": ["ConnEndPoint"]
+            },
+            "ltp": {
+              "type": "object",
+              "properties": {
+                "className": {
+                  "type": "string",
+                  "enum": ["Ltp"]
+                },
+                "id": {
+                  "type": "integer",
+                  "description": "ID of the source node"
+                }
+              }
             }
+          },
+          "endType": {
+            "type": "string",
+            "enum": ["source"]
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "className": {
+              "type": "string",
+              "enum": ["ConnEndPoint"]
+            },
+            "ltp": {
+              "type": "object",
+              "properties": {
+                "className": {
+                  "type": "string",
+                  "enum": ["Ltp"]
+                },
+                "id": {
+                  "type": "integer",
+                  "description": "ID of the sink node"
+                }
+              }
+            }
+          },
+          "endType": {
+            "type": "string",
+            "enum": ["sink"]
           }
         }
-      },
-      "required": ["className", "rate"]
+      ]
     },
     "routingCriteria": {
       "type": "string",
@@ -87,30 +125,35 @@
       "description": "Routing method to use in path calculation algorithm"
     },
     "administrativeCost": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "sncpInfo": {
       "type": "object",
       "properties": {
         "holdOffTime": {
           "type": "integer",
-          "description": "Hold off time"
+          "description": "Hold off time",
+          "default": 0
         },
         "revertive": {
           "type": "boolean",
-          "description": "Revertive or not revertive"
+          "description": "Revertive or not revertive",
+          "default": true
+        },
+        "scnpType": {
+          "type": "string",
+          "enum": ["sncp_n", "sncp_i"],
+          "default": "sncp_i",
+          "description": "Subnetwork Connection Protection"
         },
         "wtrTime": {
           "type": "integer",
-          "description": "Waiting Time"
+          "description": "Waiting Time",
+          "default": 300
         }
       },
-      "required": ["holdOffTime", "revertive", "wtrTime"]
-    },
-    "preferredSncpType": {
-      "type": "string",
-      "enum": ["sncp_n", "sncp_i"],
-      "description": "Preferred Subnetwork Connection Protection"
+      "required": ["holdOffTime", "revertive", "scnpInfo", "wtrTime"]
     },
     "pm": {
       "type": "object",
@@ -118,20 +161,23 @@
         "cd15m": {
           "type": "string",
           "enum": ["disabled", "enabledCurrent", "enabledCurrentAndArchive"],
-          "description": "cd15m state"
+          "default": "disabled"
         },
         "cd24h": {
           "type": "string",
           "enum": ["disabled", "enabledCurrent", "enabledCurrentAndArchive"],
-          "description": "cd24h state"
+          "description": "cd24h state",
+          "default": "disabled"
         }
       }
     },
     "alarmMode": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "extendedAlarmMode": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     }
   },
   "required": [
@@ -143,7 +189,6 @@
     "configurationState",
     "hierarchicalLevel",
     "name",
-    "protection",
-    "preferredSncpType"
+    "protection"
   ]
 }

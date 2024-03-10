@@ -33,7 +33,8 @@
     "configurationState": {
       "type": "string",
       "enum": ["defined", "routed", "implemented"],
-      "description": "Detail of state of configurationState"
+      "description": "Detail of state of configurationState",
+      "default": "implemented"
     },
     "connLps": {
       "type": "object",
@@ -51,34 +52,68 @@
         "fecType": {
           "type": "string",
           "enum": ["automatic", "noFec", "rsFec"],
-          "description": "Forward Error Correction type"
+          "description": "Forward Error Correction type",
+          "default": "automatic"
         }
       },
       "required": ["className", "rate"]
     },
     "connEndPoints": {
-      "type": "object",
-      "properties": {
-        "legType": {
-          "type": "string",
-          "enum": ["main", "spare", "mainSpare"]
-        },
-        "endType": {
-          "type": "string",
-          "enum": ["source", "sink"],
-          "description": "Role of the port whose id specified"
-        },
-        "ltp": {
+      "type": "array",
+      "prefixItems": [
+        {
           "type": "object",
           "properties": {
-            "id": {
-              "type": "integer",
-              "description": "Specify port id"
+            "className": {
+              "type": "string",
+              "enum": ["ConnEndPoint"]
+            },
+            "ltp": {
+              "type": "object",
+              "properties": {
+                "className": {
+                  "type": "string",
+                  "enum": ["Ltp"]
+                },
+                "id": {
+                  "type": "integer",
+                  "description": "ID of the source node"
+                }
+              }
             }
+          },
+          "endType": {
+            "type": "string",
+            "enum": ["source"]
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "className": {
+              "type": "string",
+              "enum": ["ConnEndPoint"]
+            },
+            "ltp": {
+              "type": "object",
+              "properties": {
+                "className": {
+                  "type": "string",
+                  "enum": ["Ltp"]
+                },
+                "id": {
+                  "type": "integer",
+                  "description": "ID of the sink node"
+                }
+              }
+            }
+          },
+          "endType": {
+            "type": "string",
+            "enum": ["sink"]
           }
         }
-      },
-      "required": ["className", "rate"]
+      ]
     },
     "routingCriteria": {
       "type": "string",
@@ -90,23 +125,27 @@
       "properties": {
         "holdOffTime": {
           "type": "integer",
-          "description": "Hold off time"
+          "description": "Hold off time",
+          "default": 0
         },
         "revertive": {
           "type": "boolean",
-          "description": "Revertive or not revertive"
+          "description": "Revertive or not revertive",
+          "default": true
+        },
+        "scnpType": {
+          "type": "string",
+          "enum": ["sncp_n", "sncp_i"],
+          "default": "sncp_i",
+          "description": "Subnetwork Connection Protection"
         },
         "wtrTime": {
           "type": "integer",
-          "description": "Waiting Time"
+          "description": "Waiting Time",
+          "default": 300
         }
       },
-      "required": ["holdOffTime", "revertive", "wtrTime"]
-    },
-    "preferredSncpType": {
-      "type": "string",
-      "enum": ["sncp_n", "sncp_i"],
-      "description": "Preferred Subnetwork Connection Protection"
+      "required": ["holdOffTime", "revertive", "scnpInfo", "wtrTime"]
     },
     "pm": {
       "type": "object",
@@ -181,7 +220,6 @@
     "configurationState",
     "hierarchicalLevel",
     "name",
-    "protection",
-    "preferredSncpType"
+    "protection"
   ]
 }
