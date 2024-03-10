@@ -1,0 +1,2 @@
+You are tasked with establishing a lightpath LP-Node1-Node2 between Node1 and Node2, a and starting a measurement campaign with 15-minute granularity for the established lightpath
+ 

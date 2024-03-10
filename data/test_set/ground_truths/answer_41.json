@@ -1,0 +1,47 @@
+[
+  {
+    "className": "Connection",
+    "connEndPoints": [
+      {
+        "className": "ConnEndPoint",
+        "ltp": {
+          "className": "Ltp",
+          "id": 2273
+        },
+        "endType": "source"
+      },
+      {
+        "className": "ConnEndPoint",
+        "ltp": {
+          "className": "Ltp",
+          "id": 2301
+        },
+        "endType": "sink"
+      }
+    ],
+    "routingCriteria": "byLength",
+    "sncpInfo": {
+      "holdOffTime": 0,
+      "revertive": true,
+      "sncpType": "sncp_i",
+      "wtrTime": 300
+    },
+    "connLps": [
+      {
+        "className": "ConnLpOtu",
+        "rate": "otu2x"
+      }
+    ],
+    "configurationState": "implemented",
+    "hierarchicalLevel": "infrastructure",
+    "name": "lightpath-Node1-to-Node2",
+    "protection": false
+  },
+  {
+    "configurationState": "started",
+    "pm": { "cd15m": "enabledOnlyCurrent"},
+    "transports": {
+      "name": "lightpath-Node1-to-Node2"
+    }
+  }
+]

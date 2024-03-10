@@ -1,0 +1,2 @@
+You are tasked with establishing a lightpath LP-Node3-Node1 between Node3 and Node1 and ensure it is unprotected
+You must enable a measurement campaign with 24-hour granularity for the established lightpath

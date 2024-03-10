@@ -1,0 +1,47 @@
+[
+  {
+    "className": "Connection",
+    "connEndPoints": [
+      {
+        "className": "ConnEndPoint",
+        "ltp": {
+          "className": "Ltp",
+          "id": 2361
+        },
+        "endType": "source"
+      },
+      {
+        "className": "ConnEndPoint",
+        "ltp": {
+          "className": "Ltp",
+          "id": 2273
+        },
+        "endType": "sink"
+      }
+    ],
+    "routingCriteria": "byLength",
+    "sncpInfo": {
+      "holdOffTime": 0,
+      "revertive": true,
+      "sncpType": "sncp_i",
+      "wtrTime": 300
+    },
+    "connLps": [
+      {
+        "className": "ConnLpOtu",
+        "rate": "otu2x"
+      }
+    ],
+    "configurationState": "implemented",
+    "hierarchicalLevel": "infrastructure",
+    "name": "LP-Node3-Node1",
+    "protection": false
+  },
+  {
+    "configurationState": "started",
+    "pm": { "cd24h": "enabledOnlyCurrent"},
+    "transports": {
+      "name": "LP-Node3-Node1"
+    }
+  }
+]
