@@ -42,82 +42,57 @@
       "default": "implemented"
     },
     "connLps": {
-      "type": "object",
-      "properties": {
-        "className": {
-          "type": "string",
-          "enum": ["ConnLpOtu"],
-          "description": "className of LTP Connection"
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "className": {
+            "type": "string",
+            "enum": ["ConnLpOtu"],
+            "description": "className of LTP Connection"
+          },
+          "rate": {
+            "type": "string",
+            "enum": ["otu2x"],
+            "description": "Connection rate"
+          },
+          "fecType": {
+            "type": "string",
+            "enum": ["automatic", "noFec", "rsFec"],
+            "description": "Forward Error Correction type"
+          }
         },
-        "rate": {
-          "type": "string",
-          "enum": ["otu2x"],
-          "description": "Connection rate"
-        },
-        "fecType": {
-          "type": "string",
-          "enum": ["automatic", "noFec", "rsFec"],
-          "description": "Forward Error Correction type"
-        }
-      },
-      "required": ["className", "rate"]
+        "required": ["className", "rate"]
+      }
     },
     "connEndPoints": {
       "type": "array",
-      "prefixItems": [
-        {
-          "type": "object",
-          "properties": {
-            "className": {
-              "type": "string",
-              "enum": ["ConnEndPoint"]
-            },
-            "ltp": {
-              "type": "object",
-              "properties": {
-                "className": {
-                  "type": "string",
-                  "enum": ["Ltp"]
-                },
-                "id": {
-                  "type": "integer",
-                  "description": "ID of the source node"
-                }
+      "items": {
+        "type": "object",
+        "properties": {
+          "className": {
+            "type": "string",
+            "enum": ["ConnEndPoint"]
+          },
+          "ltp": {
+            "type": "object",
+            "properties": {
+              "className": {
+                "type": "string",
+                "enum": ["Ltp"]
+              },
+              "id": {
+                "type": "integer",
+                "description": "ID of the source node"
               }
             }
-          },
-          "endType": {
-            "type": "string",
-            "enum": ["source"]
           }
         },
-        {
-          "type": "object",
-          "properties": {
-            "className": {
-              "type": "string",
-              "enum": ["ConnEndPoint"]
-            },
-            "ltp": {
-              "type": "object",
-              "properties": {
-                "className": {
-                  "type": "string",
-                  "enum": ["Ltp"]
-                },
-                "id": {
-                  "type": "integer",
-                  "description": "ID of the sink node"
-                }
-              }
-            }
-          },
-          "endType": {
-            "type": "string",
-            "enum": ["sink"]
-          }
+        "endType": {
+          "type": "string",
+          "enum": ["source", "sink"]
         }
-      ]
+      }
     },
     "routingCriteria": {
       "type": "string",
@@ -141,7 +116,7 @@
           "description": "Revertive or not revertive",
           "default": true
         },
-        "scnpType": {
+        "sncpType": {
           "type": "string",
           "enum": ["sncp_n", "sncp_i"],
           "default": "sncp_i",
@@ -153,7 +128,7 @@
           "default": 300
         }
       },
-      "required": ["holdOffTime", "revertive", "scnpInfo", "wtrTime"]
+      "required": ["holdOffTime", "revertive", "sncpType", "wtrTime"]
     },
     "pm": {
       "type": "object",

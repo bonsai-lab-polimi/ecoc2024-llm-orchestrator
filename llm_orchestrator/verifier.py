@@ -30,22 +30,28 @@ class Verifier(AbstractVerifier):
                 errors += f"Mismatch in {file_name} schema. Error message: {e.message}\n"
         return (False, errors)
 
-    def score(self, data: dict, ground_truth: dict) -> tuple[int, str]:
-        res, _ = self.verify(data)
-        if not res:
-            return (0, "Data does not match any schema")
-        if not data == ground_truth:
-            error_report = ""
-            keys_truth = set(ground_truth.keys())
-            keys_data = set(data.keys())
-            for key in keys_truth - keys_data:
-                error_report += f"Key {key} in ground truth not found in generated data\n"
-            for key in keys_data - keys_truth:
-                error_report += f"Key {key} in generated data not found in ground truth\n"
-            for key in keys_data & keys_truth:
-                if data[key] != ground_truth[key]:
-                    error_report += f"Value for key {key} does not match ground truth\n"
-            return (0, error_report)
+    def score(self, data_list: list[dict], ground_truth_list: list[dict]) -> tuple[int, str]:
+        if len(data_list) != len(ground_truth_list):
+            return (
+                0,
+                f"Data and ground truth lists are not of the same length. Lengths: {len(data_list)} and {len(ground_truth_list)}",
+            )
+        for data, ground_truth in zip(data_list, ground_truth_list):
+            res, err = self.verify(data)
+            if not res:
+                return (0, f"Data does not match any schema, {err}")
+            if not data == ground_truth:
+                error_report = ""
+                keys_truth = set(ground_truth.keys())
+                keys_data = set(data.keys())
+                for key in keys_truth - keys_data:
+                    error_report += f"Key {key} in ground truth not found in generated data\n"
+                for key in keys_data - keys_truth:
+                    error_report += f"Key {key} in generated data not found in ground truth\n"
+                for key in keys_data & keys_truth:
+                    if data[key] != ground_truth[key]:
+                        error_report += f"Value for key {key} does not match ground truth\n"
+                return (0, error_report)
         return (1, "Data matches ground truth")
 
     def _load_schemas(self) -> dict:

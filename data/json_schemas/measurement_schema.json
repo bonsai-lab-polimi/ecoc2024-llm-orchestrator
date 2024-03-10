@@ -25,9 +25,9 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
-        },
-        "description": "Name of the lightpath or service to monitor"
+          "type": "string", 
+          "description": "Name of the lightpath or service to monitor"
+        }
       }
     }
   }

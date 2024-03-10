@@ -37,16 +37,18 @@
       "default": "implemented"
     },
     "connLps": {
-      "type": "object",
+      "type": "array",
+      "items": {
+        "type": "object",
       "properties": {
         "className": {
           "type": "string",
-          "const": ["ConnLpOtu"],
+          "enum": ["ConnLpEthCbr"],
           "description": "className of LTP Connection"
         },
         "rate": {
           "type": "string",
-          "enum": ["otu2x"],
+          "enum": ["1Gb", "10Gb"],
           "description": "Connection rate"
         },
         "fecType": {
@@ -56,11 +58,11 @@
           "default": "automatic"
         }
       },
-      "required": ["className", "rate"]
+      "required": ["className", "rate"]}
     },
     "connEndPoints": {
       "type": "array",
-      "prefixItems": [
+      "items": 
         {
           "type": "object",
           "properties": {
@@ -84,36 +86,9 @@
           },
           "endType": {
             "type": "string",
-            "enum": ["source"]
-          }
-        },
-        {
-          "type": "object",
-          "properties": {
-            "className": {
-              "type": "string",
-              "enum": ["ConnEndPoint"]
-            },
-            "ltp": {
-              "type": "object",
-              "properties": {
-                "className": {
-                  "type": "string",
-                  "enum": ["Ltp"]
-                },
-                "id": {
-                  "type": "integer",
-                  "description": "ID of the sink node"
-                }
-              }
-            }
-          },
-          "endType": {
-            "type": "string",
-            "enum": ["sink"]
+            "enum": ["source", "sink"]
           }
         }
-      ]
     },
     "routingCriteria": {
       "type": "string",
@@ -133,7 +108,7 @@
           "description": "Revertive or not revertive",
           "default": true
         },
-        "scnpType": {
+        "sncpType": {
           "type": "string",
           "enum": ["sncp_n", "sncp_i"],
           "default": "sncp_i",
@@ -145,7 +120,7 @@
           "default": 300
         }
       },
-      "required": ["holdOffTime", "revertive", "scnpInfo", "wtrTime"]
+      "required": ["holdOffTime", "revertive", "sncpType", "wtrTime"]
     },
     "pm": {
       "type": "object",
