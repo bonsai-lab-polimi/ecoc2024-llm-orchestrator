@@ -83,7 +83,7 @@
               },
               "id": {
                 "type": "integer",
-                "description": "ID of the source node"
+                "description": "ID of the source/sink interface"
               }
             }
           }
@@ -114,7 +114,6 @@
         },
         "revertive": {
           "type": "boolean",
-          "description": "Revertive or not revertive",
           "default": true
         },
         "sncpType": {
@@ -142,7 +141,6 @@
         "cd24h": {
           "type": "string",
           "enum": ["disabled", "enabledCurrent", "enabledCurrentAndArchive"],
-          "description": "cd24h state",
           "default": "disabled"
         }
       }

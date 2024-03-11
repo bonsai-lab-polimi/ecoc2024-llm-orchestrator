@@ -84,7 +84,7 @@
               },
               "id": {
                 "type": "integer",
-                "description": "integer ID of the source/sink node"
+                "description": "ID of the source/sink interface"
               }
             }
           }
@@ -110,7 +110,6 @@
         },
         "revertive": {
           "type": "boolean",
-          "description": "Revertive or not revertive",
           "default": true
         },
         "sncpType": {
@@ -132,13 +131,11 @@
       "properties": {
         "cd15m": {
           "type": "string",
-          "enum": ["disabled", "enabledCurrent", "enabledCurrentAndArchive"],
-          "description": "cd15m state"
+          "enum": ["disabled", "enabledCurrent", "enabledCurrentAndArchive"]
         },
         "cd24h": {
           "type": "string",
-          "enum": ["disabled", "enabledCurrent", "enabledCurrentAndArchive"],
-          "description": "cd24h state"
+          "enum": ["disabled", "enabledCurrent", "enabledCurrentAndArchive"]
         }
       }
     },
@@ -147,7 +144,6 @@
       "properties": {
         "provisioned": {
           "type": "string",
-          "description": "pm mode provision",
           "default": ""
         }
       }

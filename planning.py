@@ -1,8 +1,10 @@
+import copy
 import json
 import os
 from typing import Iterator
 
 from llama_cpp.llama_grammar import LlamaGrammar
+from tqdm import tqdm
 
 from llm_orchestrator.llm_interface import LLMInterface
 
@@ -12,6 +14,24 @@ def main():
     system_prompt_path = os.path.join(".", "data", "system_prompts", "system_prompt_planner.txt")
     questions_folder = os.path.join(".", "data", "test_set", "prompts")
     schema_path = os.path.join(".", "data", "json_schemas", "task_schema.json")
+
+    node_to_id = {
+        "Node1": {
+            "Lightpath": set([2269, 2270, 2273, 2275, 2283, 2286, 2291, 2295]),
+            "Service-1Gb": set([2272, 2274, 2279, 2280, 2282, 2284, 2287, 2288, 2289, 2290, 2292, 2294]),
+            "Service-10Gb": set([2271, 2276, 2277, 2278, 2281, 2285, 2293, 2296]),
+        },
+        "Node2": {
+            "Lightpath": set([2297, 2298, 2301, 2303, 2311, 2314, 2319, 2323]),
+            "Service-1Gb": set([2300, 2302, 2307, 2308, 2310, 2312, 2315, 2316, 2317, 2318, 2320, 2322]),
+            "Service-10Gb": set([2299, 2304, 2305, 2306, 2309, 2313, 2321, 2324]),
+        },
+        "Node3": {
+            "Lightpath": set([2357, 2358, 2361, 2363, 2371, 2374, 2379, 2383]),
+            "Service-1Gb": set([2360, 2362, 2367, 2368, 2370, 2372, 2375, 2376, 2377, 2378, 2380, 2382]),
+            "Service-10Gb": set([2359, 2364, 2365, 2366, 2369, 2373, 2381, 2384]),
+        },
+    }
 
     # Load LLM to memory
     interface = LLMInterface(model_path, n_ctx=4096)
@@ -23,7 +43,7 @@ def main():
     system_prompt = open(system_prompt_path).read()
 
     # Loop over all the questions in the questions folder
-    for question_file in os.listdir(questions_folder):
+    for question_file in tqdm(os.listdir(questions_folder)):
         question_path = os.path.join(questions_folder, question_file)
         question_id = question_file.split("_")[1].split(".")[0]
         # Read the question
@@ -38,6 +58,15 @@ def main():
         else:
             task_list = next(output)["choices"][0]["text"]
         task_parsed = json.loads(task_list)
+
+        available_ids = copy.deepcopy(node_to_id)
+        # Assignment of nodes to source and sink interface IDs
+        for task in task_parsed:
+            if task["type"] != "Measurement":
+                source_id = available_ids[task["source"]][task["type"]].pop()
+                sink_id = available_ids[task["sink"]][task["type"]].pop()
+                task["description"] += f" ID of the source interface: {source_id}, ID of the sink interface: {sink_id}"
+
         # Save the answer
         prediction_path = os.path.join(
             ".", "data", "test_set", "predictions", "task_lists", f"prediction_{question_id}.json"
