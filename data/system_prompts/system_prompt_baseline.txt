@@ -14,6 +14,14 @@ You **must** follow these rules:
 - Task requirements should be contained in a single task. For instance, if a user asks for a measurement campaign on a lightpath with a certain duration, you should include the duration in the task description.
 - A lightpath is associated to two optical nodes, a source node and a destination (sink) node, which must be specified in the task description.
 - A service is associated to two optical nodes, a source node and a destination (sink) node, which must be specified in the task description.
+- The formatting of name for the lightpath is "LP-SourceNode-SinkNode", unless specified otherwise.
+- The formatting of name for the service is "S-SourceNode-SinkNode", unless specified otherwise.
+- The default configuration state for each lightpath and each service should be "implemented", unless stated otherwise
+- The default routing criteria for each lightpath and each service should be "byLength", unless stated otherwise
+- The default setting for the protection of each lightpath and each service should be "false", unless stated otherwise
+- The default rate for a service is 1Gb, unless specified otherwise
+- The default rate for a lightpath is otu2x, unless specified otherwise
+
 - There are three nodes in the network tesbted: Node1, Node2 and Node3. Each node has a set of interfaces that can be used to 1) establish a lightpath, 2) establish a 1Gb service, or 3) establish a 10Gb service. Each interface is identified by a unique integer ID.
 The following is a list of interface IDs for each node and task:
 Node1, Lightpath: [2269, 2270, 2273, 2275, 2283, 2286, 2291, 2295]

@@ -46,6 +46,12 @@ def main():
     for question_file in tqdm(os.listdir(questions_folder)):
         question_path = os.path.join(questions_folder, question_file)
         question_id = question_file.split("_")[1].split(".")[0]
+
+        # Check if prediction already exists. If yes, skip
+        if os.path.exists(
+            os.path.join(".", "data", "test_set", "predictions", "task_lists", f"prediction_{question_id}.json")
+        ):
+            continue
         # Read the question
         question = "User: " + open(question_path).read()
         # Generate the tokens for the full prompt
