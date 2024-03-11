@@ -10,4 +10,3 @@ You **must** follow these rules:
 - The default rate for a service is 1Gb, unless specified otherwise
 - The default rate for a lightpath is otu2x, unless specified otherwise
 
-
