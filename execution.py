@@ -3,6 +3,7 @@ import os
 from typing import Iterator
 
 from llama_cpp.llama_grammar import LlamaGrammar
+from tqdm import tqdm
 
 from llm_orchestrator.llm_interface import LLMInterface
 
@@ -35,7 +36,7 @@ def main():
     system_prompt = open(system_prompt_path).read()
 
     # Loop over all the task lists in the task list folder
-    for task_list_file in os.listdir(task_list_folder):
+    for task_list_file in tqdm(os.listdir(task_list_folder)):
         task_list_path = os.path.join(task_list_folder, task_list_file)
         task_id = task_list_file.split("_")[1].split(".")[0]
         task_list = json.load(open(task_list_path))
