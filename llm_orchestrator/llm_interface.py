@@ -13,6 +13,7 @@ class AbstractLLMInterface(ABC):
 class LLMInterface(AbstractLLMInterface):
     def __init__(self, model_path: str, **kwargs):
         self.llm = Llama(model_path=model_path, n_gpu_layers=-1, **kwargs)
+        self.llm.verbose = False
 
     def generate(self, tokens: list[int], **kwargs):
         return self.llm.create_completion(tokens, **kwargs)
