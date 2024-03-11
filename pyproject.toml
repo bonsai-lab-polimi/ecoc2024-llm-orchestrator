@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "llm_orchestrator"
 version = "0.0.1"
-dependencies = ["llama_cpp", "jsonschema"]
+dependencies = ["llama_cpp", "jsonschema", "tqdm"]
 
 [tool.setuptools.packages.find]
 where = ["llm_orchestrator"]

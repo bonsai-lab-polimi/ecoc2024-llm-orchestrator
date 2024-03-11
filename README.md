@@ -9,10 +9,11 @@ $ pip install -e .
 ```
 
 ## Usage
-The repository is structured as follows:
-- `data/` contains the LLM files, the evaluation test, and the model outputs.
+The repository is structured as a data folder and self-contained scripts for running the different components of the pipeline independently.
+- `data/` contains the LLM files, the test set, and the model outputs.
 - `llm_orchestrator/` contains Python scripts for querying the LLM interface and the output validator.
-- `sample_test.py` runs a single illustrative query of the LLM interface.
-- `run_tests.py` runs the experiments described in the paper.
+- `planning.py` runs the planning phase of the pipeline, and saves the generated tasks in the test set folder.
+- `execution.py` runs the execution phase of the pipeline, and saves the generated data structures in the test set folder.
+- `baseline.py` runs the baseline algorithm (just LLM inference without the planning and execution phases), and saves the generated data structures in the test set folder.
 
-To run the code, clone a Mistral-Instruct LLM in .gguf format from [here](https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF) and place it in `data/models`. Feel free to experiment with other models.
+To run the code, clone a Mixtral-Instruct LLM in .gguf format from [here](https://huggingface.co/TheBloke/Mixtral-8x7B-Instruct-v0.1-GGUF) and place it in `data/models/`. Feel free to experiment with other models.
