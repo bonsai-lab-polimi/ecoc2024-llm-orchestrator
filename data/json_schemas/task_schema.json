@@ -4,7 +4,7 @@
   "items": {
     "type": "object",
     "properties": {
-      "type": {
+      "task": {
         "type": "string",
         "enum": ["Lightpath", "Service-1Gb", "Service-10Gb", "Measurement"]
       },
@@ -12,6 +12,6 @@
       "sink": { "type": "string", "default": "" },
       "description": { "type": "string" }
     },
-    "required": ["type", "description"]
+    "required": ["type", "description", "source", "sink"]
   }
 }
