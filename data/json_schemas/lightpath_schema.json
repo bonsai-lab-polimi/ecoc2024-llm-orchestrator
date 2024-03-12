@@ -38,7 +38,7 @@
     "configurationState": {
       "type": "string",
       "enum": ["defined", "routed", "implemented"],
-      "description": "Detail of state of configurationState",
+      "description": "Configuration state of the ligthpath.",
       "default": "implemented"
     },
     "connLps": {

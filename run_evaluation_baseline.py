@@ -8,7 +8,7 @@ from llm_orchestrator.verifier import Verifier
 def main():
     parser = ArgumentParser()
 
-    predictions_folder_default = os.path.join(".", "data", "test_set", "predictions", "json_data")
+    predictions_folder_default = os.path.join(".", "data", "test_set", "predictions_baseline")
     ground_truth_folder_default = os.path.join(".", "data", "test_set", "ground_truths")
     schema_dir_default = os.path.join(".", "data", "json_schemas")
     report_path_default = os.path.join(".", "data", "test_set", "predictions", "report.txt")
@@ -31,11 +31,15 @@ def main():
         pred_path = os.path.join(args.predictions_folder, pred_file)
         ground_truth_path = os.path.join(args.ground_truth_folder, ground_truth_file)
         with open(pred_path) as f:
-            pred = json.load(f)
+            pred = f.read()
         with open(ground_truth_path) as f:
             ground_truth = json.load(f)
-        error = verifier.score(pred, ground_truth)
-        error_report.append(f"Error report of {pred_file} vs {ground_truth_file}: {error}\n")
+        try:
+            pred_json = verifier._parse_llm_output(pred)
+            error = verifier.score(pred_json, ground_truth)
+            error_report.append(f"Error report of {pred_file} vs {ground_truth_file}: {error}\n")
+        except json.JSONDecodeError:
+            error_report.append(f"Error parsing prediction file {pred_file}")
 
     print("\n".join(error_report))
 

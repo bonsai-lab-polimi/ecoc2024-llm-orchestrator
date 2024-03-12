@@ -34,10 +34,11 @@ def main():
     }
 
     # Load LLM to memory
-    interface = LLMInterface(model_path, n_ctx=4096)
+    interface = LLMInterface(model_path, n_ctx=8192)
 
     # Create grammar
-    grammar = LlamaGrammar.from_json_schema(open(schema_path).read())
+    schema = open(schema_path).read()
+    grammar = LlamaGrammar.from_json_schema(schema)
 
     # Read system prompt
     system_prompt = open(system_prompt_path).read()
@@ -63,14 +64,20 @@ def main():
             task_list = output["choices"][0]["text"]
         else:
             task_list = next(output)["choices"][0]["text"]
-        task_parsed = json.loads(task_list)
+
+        try:
+            task_parsed = json.loads(task_list)
+        except json.JSONDecodeError as e:
+            print(f"Error parsing the task list for question {question_id}")
+            print(task_list)
+            raise e
 
         available_ids = copy.deepcopy(node_to_id)
         # Assignment of nodes to source and sink interface IDs
         for task in task_parsed:
-            if task["type"] != "Measurement":
-                source_id = available_ids[task["source"]][task["type"]].pop()
-                sink_id = available_ids[task["sink"]][task["type"]].pop()
+            if task["task"] != "Measurement":
+                source_id = available_ids[task["source"]][task["task"]].pop()
+                sink_id = available_ids[task["sink"]][task["task"]].pop()
                 task["description"] += f" ID of the source interface: {source_id}, ID of the sink interface: {sink_id}"
 
         # Save the answer

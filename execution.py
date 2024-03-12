@@ -16,11 +16,12 @@ def main():
     schema_folder = os.path.join(".", "data", "json_schemas")
 
     # Load LLM to memory
-    interface = LLMInterface(model_path, n_ctx=4096)
+    interface = LLMInterface(model_path, n_ctx=8192)
     task_to_schema_path = {
         "Lightpath": "lightpath_schema.json",
         "Measurement": "measurement_schema.json",
-        "Service": "service_schema.json",
+        "Service-1Gb": "service_schema.json",
+        "Service-10Gb": "service_schema.json",
     }
     task_to_schema = {
         task: open(os.path.join(schema_folder, schema)).read() for task, schema in task_to_schema_path.items()
@@ -37,13 +38,17 @@ def main():
 
     # Loop over all the task lists in the task list folder
     for task_list_file in tqdm(os.listdir(task_list_folder)):
+        # Check if prediction file exists. If yes, skip
         task_list_path = os.path.join(task_list_folder, task_list_file)
         task_id = task_list_file.split("_")[1].split(".")[0]
+        # Check if prediction path exists, if yes, skip
+        if os.path.exists(os.path.join(prediction_folder, f"prediction_{task_id}.json")):
+            continue
         task_list = json.load(open(task_list_path))
         json_list = []
         # Loop over all the tasks in the task list
         for task in task_list:
-            schema_name = task["type"]
+            schema_name = task["task"]
             grammar = grammars_dict[schema_name]
             # Generate the tokens for the full prompt
             # Mistral/Mixtral Instruct requires two special tokens to start and end the prompt
