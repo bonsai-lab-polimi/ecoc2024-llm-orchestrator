@@ -34,14 +34,14 @@
     ],
     "configurationState": "implemented",
     "hierarchicalLevel": "infrastructure",
-    "name": "lightpath-Node1-to-Node2",
+    "name": "LP-Node1-Node2",
     "protection": false
   },
   {
     "configurationState": "started",
-    "pm": { "cd15m": "enabledOnlyCurrent"},
+    "pm": { "cd15m": "enabledOnlyCurrent" },
     "transports": {
-      "name": "lightpath-Node1-to-Node2"
+      "name": "LP-Node1-Node2"
     }
   }
 ]

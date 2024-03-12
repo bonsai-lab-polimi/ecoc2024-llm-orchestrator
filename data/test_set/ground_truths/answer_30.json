@@ -35,7 +35,7 @@
     "configurationState": "implemented",
     "hierarchicalLevel": "service",
     "name": "service1-Node2-Node3",
-    "protection": true
+    "protection": false
   },
   {
     "className": "Connection",

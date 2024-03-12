@@ -1,4 +1,4 @@
-You are tasked with implementing a two lightpaths lightpath between Node1 and Node2.
+You are tasked with implementing a two lightpaths between Node1 and Node2.
 One lightpath should have configuration state set as implemented and routed according to the byHops routing criteria.
 One lightpath should have configuration state set as implemented and routing according to the byLength routing criteria.
 Both lightpath should follow the following naming format: "lightpathX-SourceNode-to-SinkNode", where X is the lightpath number.

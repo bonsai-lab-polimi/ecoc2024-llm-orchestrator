@@ -1,2 +1,2 @@
-You are tasked with establishing a 1G service service-Node1-Node2 between Node1 and Node2 and ensure it is unprotected
+You are tasked with establishing a 1G service named service-Node1-Node2 between Node1 and Node2 and ensure it is unprotected
 You must enable a measurement campaign with 15-minute and 24-hour granularity for the provisioned service

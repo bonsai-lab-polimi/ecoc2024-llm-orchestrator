@@ -34,7 +34,7 @@
     ],
     "configurationState": "implemented",
     "hierarchicalLevel": "infrastructure",
-    "name": "LP-Node1-to-Node2",
+    "name": "LP-Node1-Node2",
     "protection": true
   },
   {
@@ -72,7 +72,7 @@
     ],
     "configurationState": "implemented",
     "hierarchicalLevel": "infrastructure",
-    "name": "LP-Node1-to-Node3",
+    "name": "LP-Node1-Node3",
     "protection": false
   }
 ]

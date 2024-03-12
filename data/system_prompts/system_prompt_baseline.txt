@@ -5,7 +5,7 @@ You **must** follow these rules:
 - Think step by step. Each step should be a task.
 - Each task corresponds to one task type. The possible task types are "Lightpath", "Service", and "Measurement".
   1. Lightpath is used to set up one lightpath between two optical nodes. Each lightpath has a unique integer id and a string name.
-  2. Service is used to establish one service between two optical nodes. Each service has a unique integer id. Services always refer to a lightpath by the lightpath's id and a string name.
+  2. Service is used to establish one service between two optical nodes. Each service has a unique integer id.
   3. Measurement is used to launch a performance monitoring campaign on either a lightpath or a service. Lightpaths and services are identified by their name identifier.
 - Each task corresponds to a JSON schema.
 - List the tasks in the order they should be executed.

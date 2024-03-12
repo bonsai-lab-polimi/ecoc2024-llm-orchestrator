@@ -34,7 +34,7 @@
     ],
     "configurationState": "implemented",
     "hierarchicalLevel": "infrastructure",
-    "name": "lightpath-Node2-to-Node3",
+    "name": "Node2-lightpath-Node3",
     "protection": false
   },
   {
@@ -72,7 +72,7 @@
     ],
     "configurationState": "implemented",
     "hierarchicalLevel": "infrastructure",
-    "name": "lightpath-Node1-to-Node3",
+    "name": "Node1-lightpath-Node3",
     "protection": false
   }
 ]
