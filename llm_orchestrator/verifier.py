@@ -1,6 +1,5 @@
 import json
 import os
-import re
 from abc import ABC, abstractmethod
 from typing import Any
 
@@ -18,8 +17,25 @@ class AbstractVerifier(ABC):
 class Verifier(AbstractVerifier):
     def __init__(self, schema_dir: str):
         self._schema_dir = schema_dir
+        self.node_to_id = {
+            "Node1": {
+                "Lightpath": [2269, 2270, 2273, 2275, 2283, 2286, 2291, 2295],
+                "Service-1Gb": [2272, 2274, 2279, 2280, 2282, 2284, 2287, 2288, 2289, 2290, 2292, 2294],
+                "Service-10Gb": [2271, 2276, 2277, 2278, 2281, 2285, 2293, 2296],
+            },
+            "Node2": {
+                "Lightpath": [2297, 2298, 2301, 2303, 2311, 2314, 2319, 2323],
+                "Service-1Gb": [2300, 2302, 2307, 2308, 2310, 2312, 2315, 2316, 2317, 2318, 2320, 2322],
+                "Service-10Gb": [2299, 2304, 2305, 2306, 2309, 2313, 2321, 2324],
+            },
+            "Node3": {
+                "Lightpath": [2357, 2358, 2361, 2363, 2371, 2374, 2379, 2383],
+                "Service-1Gb": [2360, 2362, 2367, 2368, 2370, 2372, 2375, 2376, 2377, 2378, 2380, 2382],
+                "Service-10Gb": [2359, 2364, 2365, 2366, 2369, 2373, 2381, 2384],
+            },
+        }
 
-    def verify(self, data: dict) -> tuple[bool, str]:
+    def verify(self, data: dict):
         schema_files = self._load_schemas()
         errors = []
         for file_name, schema in schema_files.items():
@@ -30,27 +46,26 @@ class Verifier(AbstractVerifier):
                 errors.append(f"Mismatch in {file_name} schema. Error message: {e.message}")
         return (False, errors)
 
-    def score(self, data_list: list[dict], ground_truth_list: list[dict]) -> tuple[int, str]:
+    def score(self, data_list: list[dict], ground_truth_list: list[dict]) -> str:
         if len(data_list) != len(ground_truth_list):
-            return (
-                0,
-                f"Data and ground truth lists are not of the same length. Lengths: {len(data_list)} and {len(ground_truth_list)}",
-            )
+            return f"Data and ground truth lists are not of the same length. Data length: {len(data_list)}, Ground truth length: {len(ground_truth_list)}"
+        error_report = []
         for data, ground_truth in zip(data_list, ground_truth_list):
             res, schema = self.verify(data)
             if not res:
-                return (0, f"Data does not match any schema, {schema}")
+                return f"Data does not match any schema, {schema}"
             if not data == ground_truth:
-                error_report = []
+
                 keys_truth = set(ground_truth.keys())
                 keys_data = set(data.keys())
                 _, err = self._compare_json_with_schema(data, ground_truth, schema)
                 error_report += err
                 for key in keys_data & keys_truth:
                     if data[key] != ground_truth[key]:
-                        error_report.append(f"Value for key {key} does not match ground truth")
-                return (0, "\n".join(error_report))
-        return (1, "Data matches ground truth")
+                        error_report.append(
+                            f"Value for key {key} does not match ground truth. Predicted value: {data[key]}, Ground truth value: {ground_truth[key]}"
+                        )
+        return "\n".join(error_report)
 
     def _load_schemas(self) -> dict:
         schema_files = os.listdir(self._schema_dir)
@@ -62,22 +77,18 @@ class Verifier(AbstractVerifier):
                 schemas[schema_file] = schema
         return schemas
 
-    def _parse_llm_output(self, json_string: str) -> list:
-        json_list = []
-        pattern = r"""```    # match first occuring triple backticks
-                    (?:json)? # zero or one match of string json in non-capturing group
-                    (.*?)     # non-greedy match to the next triple backticks
-                    ```       # match the closing backticks
-                    """
-        for match in re.finditer(pattern, json_string, flags=re.DOTALL | re.VERBOSE):
-            json_str = match.group(1).strip()
+    def _parse_llm_output(self, json_string: str):
+        start_index = json_string.find("```json\n")
+        if start_index == -1:  # No JSON block found
+            raise json.JSONDecodeError("Error in parsing JSON", json_string, 0)
 
-            try:
-                parsed = json.loads(json_str, strict=False)
-                json_list.append(parsed)
-            except json.JSONDecodeError:
-                print(f"Invalid JSON found: {json_str}")
-        return json_list
+        end_index = json_string.find("\n```", start_index)
+        if end_index == -1:  # No closing backticks found
+            raise json.JSONDecodeError("Error in parsing JSON", json_string, 0)
+
+        json_body = json_string[start_index + 8 : end_index]  # Extract the JSON part
+
+        return json.loads(json_body)
 
     def _compare_json_with_schema(self, json1, json2, schema):
         error_log = []
@@ -89,19 +100,22 @@ class Verifier(AbstractVerifier):
         def compare_nested(json1, json2, schema, key_path=""):
             for key, schema_value in schema["properties"].items():
                 new_key_path = key_path + "." + key if key_path else key
-                if key not in json2:
-                    if "default" in schema_value and json1[key] == schema_value["default"]:
-                        continue
+                if key in json1:
+                    if key not in json2:
+                        if "default" in schema_value and json1[key] == schema_value["default"]:
+                            continue
+                        else:
+                            add_error(new_key_path, "Key missing in second JSON")
+                            return False  # Stop recursion if a mismatch is found
+                    elif isinstance(json1[key], dict) and isinstance(json2[key], dict):
+                        if not compare_nested(json1[key], json2[key], schema_value, new_key_path):
+                            return False
                     else:
-                        add_error(new_key_path, "Key missing in second JSON")
-                        return False  # Stop recursion if a mismatch is found
-                elif isinstance(json1[key], dict) and isinstance(json2[key], dict):
-                    if not compare_nested(json1[key], json2[key], schema_value, new_key_path):
-                        return False
-                else:
-                    if json1[key] != json2[key]:
-                        add_error(new_key_path, "Value mismatch")
-                        return False
+                        if json1[key] != json2[key]:
+                            add_error(new_key_path, "Value mismatch")
+                            return False
+                elif key in json2 and key not in json1:
+                    add_error(new_key_path, "Missing key in predicted JSON")
 
             return True  # Only reached if no mismatches were found
 
