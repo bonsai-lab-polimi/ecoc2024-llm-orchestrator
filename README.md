@@ -9,7 +9,7 @@ $ pip install -e .
 ```
 
 ## Usage
-The repository is structured as a data folder and self-contained scripts for running the different components of the pipeline independently.
+The repository is structured as a data folder and self-contained scripts for running the different components of the pipeline independently. Said code will be encapsulated into the `LLMInterface` class in the future.
 - `data/` contains the LLM files, the test set, and the model outputs.
 - `llm_orchestrator/` contains Python scripts for querying the LLM interface and the output validator.
 - `planning.py` runs the planning phase of the pipeline, and saves the generated tasks in the test set folder.
