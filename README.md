@@ -17,3 +17,6 @@ The repository is structured as a data folder and self-contained scripts for run
 - `baseline.py` runs the baseline algorithm (just LLM inference without the planning and execution phases), and saves the generated data structures in the test set folder.
 
 To run the code, clone a Mixtral-Instruct LLM in .gguf format from [here](https://huggingface.co/TheBloke/Mixtral-8x7B-Instruct-v0.1-GGUF) and place it in `data/models/`. Feel free to experiment with other models.
+
+## ECOC 2024 paper
+You may download the paper associated with this repo here: [insert link]
